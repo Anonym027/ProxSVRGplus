@@ -6,7 +6,7 @@ The main problem of interest is Non-negative Principal Component Analysis (NN-PC
 
 ## GenAI Tutorial
 
-📘 See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used throughout the development, debugging, packaging, and validation of this project.
+See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used throughout the development, debugging, packaging, and validation of this project.
 
 ---
 
