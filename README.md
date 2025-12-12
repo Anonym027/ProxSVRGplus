@@ -1,6 +1,6 @@
 # ProxSVRG+ for Non-convex Optimization
 
-This project is a Python implementation of several proximal stochastic gradient methods for non-convex finite-sum optimization problems. It was developed as part of a graduate course on optimization. The primary algorithms implemented are ProxGD, ProxSGD, ProxSVRG, and ProxSVRG+.
+This project is a Python implementation of several proximal stochastic gradient methods for non-convex finite-sum optimization problems. It was developed as part of a graduate course on optimization, primarily based on the paper 'A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization' by Li and Li (2018). The primary algorithms implemented are ProxGD, ProxSGD, ProxSVRG, and ProxSVRG+.
 
 The main problem of interest is Non-negative Principal Component Analysis (NN-PCA). The algorithms are tested on synthetic von Mises-Fisher (vMF) data, as well as the `a9a` and `MNIST` datasets.
 
@@ -43,7 +43,7 @@ editable mode using:
 
 ```bash
 pip install git+https://github.com/Anonym027/ProxSVRGplus.git
-
+```
 
 ## Project Structure
 
@@ -92,3 +92,22 @@ python experiments/plot_fig3.py
 - **ProxSVRG+**
 
 These are implemented in the `src/proxsvrgplus/optim/` directory.
+
+## Citation
+
+If you find this work useful or use the provided algorithms, please consider citing the original paper:
+
+```bibtex
+@article{li2018simple,
+  title={A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization},
+  author={Li, Zhize and Li, Jian},
+  journal={arXiv preprint arXiv:1802.04477},
+  year={2018}
+}
+```
+
+Or in a more readable format:
+
+Zhize Li, Jian Li. "A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization." *arXiv preprint arXiv:1802.04477* (2018).
+
+[View on arXiv](https://arxiv.org/abs/1802.04477)
