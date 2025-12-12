@@ -21,7 +21,7 @@ dist/
 
 # Project-specific
 report/
-data/mnist/
+data/mnist
 
 # Generated results (ignore .npy, but keep .png figures)
 results/*.npy
