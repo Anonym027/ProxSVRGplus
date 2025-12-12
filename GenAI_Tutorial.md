@@ -21,7 +21,7 @@ Before any code was written, ChatGPT was prompted to analyze the source research
 
 > **Example User Prompt to ChatGPT:**
 > "Based on the uploaded research paper and my course project proposal, generate a `GEMINI.md` file. This file will serve as a long-term context-priming document for the Gemini CLI agent, including research objectives, algorithm scope, experimental design principles, and code style constraints."
-(See `GEMINI.md` in the repository for the generated file)
+(See [GEMINI.md](./GEMINI.md) in the repository for the generated file)
 
 ---
 

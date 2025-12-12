@@ -4,6 +4,12 @@ This project is a Python implementation of several proximal stochastic gradient 
 
 The main problem of interest is Non-negative Principal Component Analysis (NN-PCA). The algorithms are tested on synthetic von Mises-Fisher (vMF) data, as well as the `a9a` and `MNIST` datasets.
 
+## GenAI Tutorial
+
+See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step
+tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used
+throughout the development, debugging, packaging, and validation of this project.
+
 ## Quickstart
 
 After installing the package, you can run a quick demonstration on the `a9a` dataset directly from your terminal.
