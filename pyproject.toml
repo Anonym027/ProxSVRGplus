@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prox-svrg-plus"
+version = "0.1.0"
+authors = [
+  { name="Anonym027", email="your_email@example.com" },
+]
+description = "A Python implementation of ProxSVRG, ProxSVRG+, and other proximal algorithms for non-convex optimization."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy",
+    "scikit-learn",
+    "matplotlib",
+    "pandas",
+]
+
+[project.urls]
+Homepage = "https://github.com/Anonym027/ProxSVRGplus"
+
+[project.scripts]
+proxsvrgplus-demo = "proxsvrgplus.cli:main"
+
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

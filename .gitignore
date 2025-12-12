@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.so
+
+# IDE / Editor
+.idea/
+.vscode/
+
+# Project-specific
+report/
+data/mnist/
+
+# Generated results (ignore .npy, but keep .png figures)
+results/*.npy
+results/__pycache__/
+
+
+# Root files
+/*.npy
+GEMINI.md
+.Rhistory
+*.docx
+*.pdf
+*.pptx
+
+# OS-specific
+.DS_Store
+Thumbs.db
