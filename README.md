@@ -6,7 +6,7 @@ The main problem of interest is Non-negative Principal Component Analysis (NN-PC
 
 ## GenAI Tutorial
 
-See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used throughout the development, debugging, packaging, and validation of this project.
+See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used throughout the development, debugging, packaging, and validation of this project. This tutorial documents a dual-AI workflow using ChatGPT for high-level reasoning and Gemini CLI for direct code execution.
 
 ---
 
@@ -38,7 +38,8 @@ This is the recommended approach if you want to use the implemented optimization
     ```
 
 3.  **Verify Installation with the CLI Demo:**
-    After installation, you can run a self-contained demo. This command uses a bundled version of the `a9a.txt` dataset and proves that the package is installed and working correctly.
+    After installation, you can run a self-contained demo. This command uses a bundled version of the `a9a.txt` dataset and serves as a self-contained sanity check, demonstrating that the package can be installed and executed correctly from any working directory.
+
     ```bash
     proxsvrgplus-demo run-demo
     ```
