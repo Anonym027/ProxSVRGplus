@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 import numpy as np
+import importlib.resources
 
 # To locate the data file, we need the project root.
 # This assumes the CLI is run after installation, so we can't
@@ -23,16 +24,16 @@ def run_a9a_demo():
     print("=======================================\n")
 
     # --- 1. Find and load data ---
-    # For the demo, we assume the 'data/a9a.txt' file is available
-    # in the current working directory or a subdirectory.
-    a9a_path = Path("./data/a9a.txt")
-    if not a9a_path.exists():
-        print(f"Error: Data file not found at '{a9a_path.resolve()}'")
-        print("Please run this command from the project root directory where the 'data' folder exists.")
+    # Load the 'a9a.txt' data file from within the installed package.
+    try:
+        with importlib.resources.path("proxsvrgplus.data", "a9a.txt") as a9a_path:
+            print(f"Loading a9a dataset from packaged data...")
+            problem = make_a9a_nnpca_problem(a9a_path)
+    except (ModuleNotFoundError, FileNotFoundError):
+        print("Error: Could not load the packaged 'a9a.txt' data file.")
+        print("Please ensure the package was installed correctly.")
         return
 
-    print(f"Loading a9a dataset from: {a9a_path}")
-    problem = make_a9a_nnpca_problem(a9a_path)
     d = problem.d
     n = problem.n
     L = problem.L

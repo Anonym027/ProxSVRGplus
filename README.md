@@ -1,107 +1,109 @@
 # ProxSVRG+ for Non-convex Optimization
 
-This project is a Python implementation of several proximal stochastic gradient methods for non-convex finite-sum optimization problems. It was developed as part of a graduate course on optimization, primarily based on the paper 'A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization' by Li and Li (2018). The primary algorithms implemented are ProxGD, ProxSGD, ProxSVRG, and ProxSVRG+.
+This project is a Python implementation of several proximal stochastic gradient methods for non-convex finite-sum optimization problems. It was developed as part of a graduate course on optimization, primarily based on the paper 'A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization' by Li and Li (2018).
 
 The main problem of interest is Non-negative Principal Component Analysis (NN-PCA). The algorithms are tested on synthetic von Mises-Fisher (vMF) data, as well as the `a9a` and `MNIST` datasets.
 
 ## GenAI Tutorial
 
-See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step
-tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used
-throughout the development, debugging, packaging, and validation of this project.
+📘 See [GenAI_Tutorial.md](./GenAI_Tutorial.md) for a detailed, step-by-step tutorial documenting how generative AI tools (Gemini CLI, ChatGPT) were used throughout the development, debugging, packaging, and validation of this project.
 
-## Quickstart
+---
 
-After installing the package, you can run a quick demonstration on the `a9a` dataset directly from your terminal.
+## How to Use This Project
 
-```bash
-# First, ensure you have installed the package in editable mode.
-# Then, from the project's root directory:
-proxsvrgplus-demo run-demo
-```
+There are two primary ways to use this project, depending on your goal.
 
-This command runs a lightweight CLI demo that executes ProxSGD for a few epochs
-on the a9a dataset and prints logs to the console. It is intended as a quick
-sanity check that the package and CLI are installed correctly.
+### Option 1: As an Installable Python Library
 
+This is the recommended approach if you want to use the implemented optimization algorithms in your own projects.
 
-## Installation
+1.  **Install the package directly from GitHub:**
+    ```bash
+    pip install git+https://github.com/Anonym027/ProxSVRGplus.git
+    ```
 
-To set up the project, first clone the repository. It is recommended to use a virtual environment.
+2.  **Use the algorithms in your code:**
+    ```python
+    import numpy as np
+    from proxsvrgplus.optim import prox_sgd
+    from proxsvrgplus.problems.datasets import make_a9a_nnpca_problem
+    
+    # Your code to create a problem instance...
+    # problem = ... 
+    # x0 = ...
+    
+    # Use the algorithm
+    # x_final, history = prox_sgd(problem, x0, ...)
+    ```
 
-```bash
-# Clone the repository
-git clone https://github.com/Anonym027/ProxSVRGplus.git
-cd ProxSVRGplus
+3.  **Verify Installation with the CLI Demo:**
+    After installation, you can run a self-contained demo. This command uses a bundled version of the `a9a.txt` dataset and proves that the package is installed and working correctly.
+    ```bash
+    proxsvrgplus-demo run-demo
+    ```
 
-# Create and activate a virtual environment (optional but recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+### Option 2: To Reproduce the Research Experiments
 
-# Install the package and its dependencies in editable mode
-pip install -e .[dev]
-```
+This is the recommended approach for developers, reviewers, or anyone who wants to run the exact experiments described in this project and generate the plots.
 
-This command installs the package in "editable" mode (`-e`) and includes the development dependencies (`[dev]`), such as `pytest`. This is required to run the scripts and the CLI demo.
+1.  **Clone the full repository:**
+    ```bash
+    git clone https://github.com/Anonym027/ProxSVRGplus.git
+    cd ProxSVRGplus
+    ```
 
-Alternatively, the package can be installed directly from GitHub without
-editable mode using:
+2.  **Set up a virtual environment and install in editable mode:**
+    ```bash
+    # Create and activate a virtual environment
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-```bash
-pip install git+https://github.com/Anonym027/ProxSVRGplus.git
-```
+    # Install the package with development dependencies
+    pip install -e .[dev]
+    ```
+
+3.  **Run the experiment scripts:**
+    You can now run the scripts located in the `experiments/` directory.
+    ```bash
+    # Run the a9a experiment grid
+    python experiments/a9a_bgrid.py
+
+    # Run the MNIST experiment grid
+    python experiments/mnist_bgrid.py
+    ```
+    *Note: For experiment reproducibility, please ensure `a9a.txt` and `mnist` are present in the top-level `data/` directory.*
+
+4.  **Generate plots:**
+    After the experiments are finished, you can generate the summary figures.
+    ```bash
+    python experiments/plot_fig3.py
+    ```
+
+---
 
 ## Project Structure
 
-- **`src/proxsvrgplus/`**: Contains the core, installable Python package.
-  - **`optim/`**: Implementations of the optimization algorithms (ProxGD, ProxSGD, ProxSVRG, ProxSVRG+).
-  - **`problems/`**: Code for defining the NN-PCA problem, loading datasets, and simulating data.
-  - **`cli.py`**: Defines the command-line interface for the `proxsvrgplus-demo` command.
-- **`data/`**: Directory for storing datasets like `a9a.txt`.
-- **`experiments/`**: Scripts to run the main experiments and generate plots.
+- **`src/proxsvrgplus/`**: The core, installable Python package.
+- **`data/`**: Directory for storing experiment data. The large `mnist` dataset will be downloaded here.
+- **`experiments/`**: Scripts to run experiments and generate plots.
 - **`results/`**: Default output directory for `.npy` data files and figures.
-- **`tests/`**: Legacy runnable scripts used during development for executing experiments and plotting results (not unit tests).
+- **`tests/`**: Legacy runnable scripts used during development.
 
-## How to Run Experiments
+---
 
-The main experiments are grids of runs over different mini-batch sizes (`b`). You can run them using the scripts in the `experiments/` directory.
+## Datasets
 
-For example, to run the `a9a` experiment across all configured batch sizes:
+The `a9a` and `MNIST` datasets used in this project can be downloaded from:
+[https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/)
 
-```bash
-python experiments/a9a_bgrid.py
-```
+Specifically, `a9a.txt` is found under the "binary" section, and `mnist.bz2` (which needs to be decompressed) is found under the "multiclass" section.
 
-Similarly, for the `MNIST` dataset:
-
-```bash
-python experiments/mnist_bgrid.py
-```
-
-The numerical results (`.npy` files) will be saved in the `results/` directory.
-
-## How to Generate Plots
-
-After running the experiments, you can generate the summary figures (similar to those in the original paper) using the `plot_*.py` scripts.
-
-To generate Figure 3, which compares all algorithms on both datasets for specific batch sizes:
-
-```bash
-python experiments/plot_fig3.py
-```
-
-## Implemented Algorithms
-
-- **Proximal Gradient Descent (ProxGD)**
-- **Proximal Stochastic Gradient Descent (ProxSGD)**
-- **Proximal SVRG (ProxSVRG)**
-- **ProxSVRG+**
-
-These are implemented in the `src/proxsvrgplus/optim/` directory.
+---
 
 ## Citation
 
-If you find this work useful or use the provided algorithms, please consider citing the original paper:
+If you find this work useful, please consider citing the original paper:
 
 ```bibtex
 @article{li2018simple,
@@ -111,9 +113,4 @@ If you find this work useful or use the provided algorithms, please consider cit
   year={2018}
 }
 ```
-
-Or in a more readable format:
-
-Zhize Li, Jian Li. "A Simple Proximal Stochastic Gradient Method for Nonsmooth Nonconvex Optimization." *arXiv preprint arXiv:1802.04477* (2018).
-
 [View on arXiv](https://arxiv.org/abs/1802.04477)
