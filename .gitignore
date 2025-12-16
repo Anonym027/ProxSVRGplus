@@ -24,13 +24,11 @@ report/
 data/mnist
 
 # Generated results (ignore .npy, but keep .png figures)
-results/*.npy
 results/__pycache__/
 
 
 # Root files
 /*.npy
-GEMINI.md
 .Rhistory
 *.docx
 *.pdf
